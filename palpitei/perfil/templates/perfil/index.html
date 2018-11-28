@@ -1,4 +1,19 @@
 {% extends "perfil/base.html" %}
 {% block body %}
+{% if user.username %}
+	<a href="{% url 'logout' %}">Sair</a>
+{% else %}
+	<a href="{% url 'login' %}">Login</a>	
+{% endif %}
+
 <h1>Palpitei</h1>
+{{user.username}}
+
+{% for contest in contests %}
+	<p>Concurso Nº: {{ contest }}</p>
+	{% for ten in contest.ten_contests.all %}
+		-{{ten}}
+	{% endfor %}
+{% endfor %}
+
 {% endblock %}
