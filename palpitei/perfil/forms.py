@@ -2,6 +2,7 @@
 from django.forms import ModelForm 
 from django import forms 
 from django.contrib.auth.models import User
+from perfil.models import *
 
 
 
@@ -33,3 +34,8 @@ class UserModelForm(forms.ModelForm):
         if commit:
             user.save()
         return user    
+
+class TenTipsModelForm(forms.ModelForm):
+    class Meta:
+        model = TenTips
+        fields = ['value']

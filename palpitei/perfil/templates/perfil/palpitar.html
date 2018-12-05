@@ -1,0 +1,14 @@
+{% extends "perfil/base.html" %}
+{% block body %}
+<h2>Criar palpite para a {{lottery}}.</h2>
+<form action="{% url 'palpitar' lottery.id %}" method="POST">
+	{% csrf_token %}
+	{% for i in range %}
+		{% if i != 0 %}
+		<input type="number" name="value[{{i}}]" value="0" id="id_value" required>
+		{% endif %}
+	{% endfor %}
+	<button type="submit">PALPITAR</button>
+</form>
+
+{% endblock %}

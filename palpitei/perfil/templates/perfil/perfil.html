@@ -1,0 +1,22 @@
+{% extends "perfil/base.html" %}
+{% block body %}
+<h1>{{perfil.username}}</h1>
+
+{% for contest in contests %}
+	<p>Concurso Nº: {{ contest }}</p>
+	{% for ten in contest.ten_contests.all %}
+		-{{ten}}
+	{% endfor %}
+{% endfor %}
+
+<h2>my Tips</h2>
+{% for tips in tipies %}
+	{{ tips }}
+{% endfor %}
+
+<h2>Lotteries</h2>
+{% for lottery in lotteries %}
+	{{ lottery }} <a href="{% url 'palpitar' lottery.id %}">Palpitar</a>
+{% endfor %}
+
+{% endblock %}
